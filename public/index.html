@@ -42,20 +42,26 @@
               margin-top: 80px;
           }
       </style>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+      <script src="index.js" type="application/javascript"></script>
   </head>
-  <body ng-app="AlleRecipe" ng-controller="mainCtrl">
-      <br>
-        <div class="container" ng-show="user">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="profile">
-                    <img class="roundedlogo" src="https://thumbs.dreamstime.com/t/default-male-avatar-profile-picture-icon-grey-man-photo-placeholder-vector-illustration-88414414.jpg" />
-                        </a>
-                    <label style="margin-left: 5px; text-decoration: underline;">Omer Moran</label>
+  <body ng-app="AlleRecipe">
+      <div ng-controller="mainctrl">
+          <br>
+            <div class="container" ng-show="user">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="profile">
+                        <img class="roundedlogo" src="https://thumbs.dreamstime.com/t/default-male-avatar-profile-picture-icon-grey-man-photo-placeholder-vector-illustration-88414414.jpg" />
+                            </a>
+                        <label style="margin-left: 5px; text-decoration: underline;">Omer Moran</label>
+                    </div>
                 </div>
             </div>
-        </div>
-      <div ng-view></div>
+          <div ng-view></div>
+      </div>
       
 
     <!-- Optional JavaScript -->
@@ -63,10 +69,13 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+    
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });
       </script>
-    <script src="index.js" type="application/javascript"></script>
+    
+    <script src="javascript/uploadingImage.js" type="application/javascript"></script>
+    <script src="javascript/signUp.js" type="application/javascript"></script>
+    <script src="javascript/routing.js" type="application/javascript"></script>
+    
   </body>
 </html>

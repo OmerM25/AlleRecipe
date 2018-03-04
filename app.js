@@ -5,7 +5,8 @@ const clarifai = require('./clarifai');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // fs.readFile('public/index.html', (err, html) => {
 //    if(err) {
@@ -23,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/predict', function(req, res) {
-  clarifai.predict(req.data.picture).then(
+  clarifai.predict(req.body.picture).then(
     function(response) {
       res.send(JSON.stringify(response.outputs[0].data.concepts));
     }, function(err) {
