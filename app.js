@@ -1,24 +1,25 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const app = express();
 
+<<<<<<< HEAD
 fs.readFile('public/index.html', (err, html) => {
    if(err) {
        throw err;
    }
+=======
+>>>>>>> 488ef0ac918da9d75183bb8eeb76bb0822f2c36a
 
-    const server = http.createServer((req, res) => {
+app.use(express.static(path.join(__dirname, 'public')));
 
-        res.statusCode = 200;
-        res.setHeader('Content-type', 'text/html');
-        res.write(html);
-        res.end();
-    });
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-    server.listen(port, hostname, () => {
-        console.log('Server started on port ' + port);
-    });
+app.get('/', (req, res) => {
+  res.render('pages/index')
 });
 
+
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
