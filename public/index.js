@@ -1,15 +1,14 @@
-var AlleRecipe = angular.module('AlleRecipe',[]);
+var AlleRecipe = angular.module('AlleRecipe',['ngRoute']);
 
-AlleRecipe.controller('GreetingController', ['$scope', function($scope) {
+AlleRecipe.controller('mainCtrl', ['$scope', function($scope) {
   $scope.greeting = 'Hola!';
-    alert("hey");
-}]);
-//.config(function($routeProvider) {
-//  $routeProvider
-//   .when('/Book', {
-//    templateUrl: 'a.html'
-//  })
-//  .when('/Books', {
-//    templateUrl: 'index.html'
-//  });
-//});
+}])
+.config(function($routeProvider) {
+  $routeProvider
+   .when('/Book', {
+    templateUrl: 'a.html'
+  })
+  .when('/Books', {
+    templateUrl: 'index.html'
+  });
+});
