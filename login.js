@@ -1,20 +1,15 @@
 const express = require('express')
 const app = express();
 
-app.post('/login', (req, res) => {
-    clarifai.predict(req.data.picture).then(
-        function(response) {
-          res.send(JSON.stringify(response.outputs[0].data.concepts));
-        }, function(err) {
-          res.send(err);
-        });
-});
+function login(req, res) {
 
-app.post('/predict', (req, res) => {
-  clarifai.predict(req.data.picture).then(
-    function(response) {
-      res.send(JSON.stringify(response.outputs[0].data.concepts));
-    }, function(err) {
-      res.send(err);
-    });
-});
+    // you might like to do a database look-up or something more scalable here
+    if (req.body.username && req.body.username === 'user' && req.body.password && req.body.password === 'pass') {
+        req.session.authenticated = true;
+        res.redirect('/secure');
+    } else {
+        req.flash('error', 'Username and password are incorrect');
+        res.redirect('/login');
+    }
+
+};

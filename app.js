@@ -3,6 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const clarifai = require('./clarifai');
 const app = express();
+const login = require('')
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -22,7 +23,10 @@ app.post('/predict', (req, res) => {
     });
 });
 
+app.post('/login', function (req, res) {
+  login.login(req, res);
+});
+
 app.listen(PORT, function () {
   console.log('Ready');
 });
-
