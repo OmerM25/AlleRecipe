@@ -37,6 +37,7 @@ app.post('/predict', function(req, res) {
       };
 
       dataHandler.addImage(imageModel);
+      res.status(200).send(ingredients);
     }, function(err) {
       res.status(500).send(err);
     });
