@@ -5,6 +5,10 @@ const clarifai = require('./clarifai');
 
 const app = express();
 
+fs.readFile('public/index.html', (err, html) => {
+   if(err) {
+       throw err;
+   }
 
 app.use(express.static(path.join(__dirname, 'public')));
 
