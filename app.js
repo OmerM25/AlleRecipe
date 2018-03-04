@@ -27,9 +27,10 @@ app.get('/', (req, res) => {
 app.post('/predict', function(req, res) {
   clarifai.predict(req.body.picture).then(
     function(response) {
-      res.send(JSON.stringify(response.outputs[0].data.concepts));
+      var ingredients = response.outputs[0].data.concepts;
+      res.status(200).send(ingredients);
     }, function(err) {
-      res.send(err);
+      res.status(500).send(err);
     });
 });
 
