@@ -1,14 +1,9 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
+const express = require('express');
+const path = require('path');
+const PORT = process.env.PORT || 5000;
 const clarifai = require('./clarifai');
-
 const app = express();
-
-fs.readFile('public/index.html', (err, html) => {
-   if(err) {
-       throw err;
-   }
+const login = require('./login');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -16,7 +11,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('pages/index')
+  res.render('index.html');
 });
 
 app.post('/predict', (req, res) => {
@@ -28,4 +23,10 @@ app.post('/predict', (req, res) => {
     });
 });
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+app.post('/login', function (req, res) {
+   login.login(req, res);
+});
+
+app.listen(PORT, function () {
+  console.log('Ready');
+});
