@@ -46,6 +46,10 @@ app.post('/login', function (req, res) {
    login.login(req, res);
 });
 
+app.get('/images', function (req, res) {
+  res.send(dataHandler.getImages());
+})
+
 app.listen(PORT, function () {
   console.log('Ready');
 });

@@ -7,10 +7,13 @@ module.exports.getImages = function() {
 }
 
 module.exports.addImage = function(img) {
-  let images = fs.readFileSync('data/images');
-  images = JSON.parse(images);
-  if (!images) {
-    images = [];
+  var images = [];
+
+  try {
+    var currentImages = fs.readFileSync('data/images');
+    images = JSON.parse(currentImages);
+  } catch (e) {
+
   }
 
   images.push(img);
@@ -24,12 +27,15 @@ module.exports.getUsers = function() {
 }
 
 module.exports.addUser = function(user) {
-  let users = fs.readFileSync('data/users');
-  users = JSON.parse(users);
-  if (!users) {
-    users = [];
+  var users = [];
+
+  try {
+    var currentUsers = fs.readFileSync('data/users');
+    users = JSON.parse(currentUsers);
+  } catch (e) {
+
   }
 
-  images.push(user);
+  users.push(user);
   fs.writeFileSync('data/users', JSON.stringify(users));
 };
