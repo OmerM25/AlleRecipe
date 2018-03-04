@@ -1,4 +1,41 @@
-<div style="background-color: white">
-
-
+<!--<div style="background-color: white; color: black !important;">-->
+<div>
+    
+    <table class="table" style="text-align: center">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Probability</th>
+          <th scope="col">Keep it?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="ing in ingredients" ng-if="ing.value >= 0.75">
+          <td>{{ing.name | capitalize}}</td>
+          <td>{{ing.value | percentage:2}}</td>
+          <td>
+              <div>
+                  <label class="label" style="margin-left: 10px">
+                    <input  class="label__checkbox" type="checkbox" checked />
+                    <span class="label__text">
+                      <span class="label__check">
+                        <i class="fa fa-check icon"></i>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="fab">
+        <a style="
+    font-size: 1.8em;
+    margin-top: 5px;
+    position:  absolute;
+    margin-right: 2px;
+    left: 28px;
+">></a>
+    </div>
 </div>

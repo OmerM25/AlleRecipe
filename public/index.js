@@ -1,5 +1,7 @@
 var AlleRecipe = angular.module('AlleRecipe',['ngRoute']);
 
+$(document).ready(function() { $('body').bootstrapMaterialDesign(); });
+
 AlleRecipe.controller('mainctrl', ['$scope', function($scope) {
   $scope.user = '';
   $scope.checkUser = function(){
@@ -19,6 +21,10 @@ AlleRecipe.controller('mainctrl', ['$scope', function($scope) {
     templateUrl: 'view/uploadingImage.html',
     controller: 'uploadctrl'
   })
+  .when('/ingredients', {
+    templateUrl: 'view/ingredients.html',
+    controller: 'ingredientsCtrl'
+  })
   .when('/profile', {
     templateUrl: 'view/profile.html',
     controller : ""
@@ -26,4 +32,29 @@ AlleRecipe.controller('mainctrl', ['$scope', function($scope) {
   .otherwise({
         templateUrl : 'view/signUp.html'
   });
+})
+.filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+})
+.filter('percentage', ['$filter', function ($filter) {
+  return function (input, decimals) {
+    return $filter('number')(input * 100, decimals) + '%';
+  };
+}])
+.factory("ingredientFactory", function() {
+ var ingredients = []
+ 
+ function set(data) {
+   ingredients = data;
+ }
+ function get() {
+  return ingredients;
+ }
+
+ return {
+  set: set,
+  get: get
+ }  
 });

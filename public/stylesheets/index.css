@@ -15,3 +15,31 @@
 .color{
     color: aqua !important;
 }
+
+.table thead th {
+    color: white !important;
+    font-size: 1rem !important;
+}
+
+
+.fab {
+	  border:none;
+    font-size:1.5em;
+    color:white;
+    background-color: #d06386;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    margin: auto;
+    position: fixed;
+    top: 540px;
+    left: 310px;
+    text-align: center;
+    -webkit-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+       -moz-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+            box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+}
+
+.fab:hover {
+  background-color: #ff4060;
+}
