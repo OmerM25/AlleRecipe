@@ -3,7 +3,7 @@ module.exports = {
 
         // you might like to do a database look-up or something more scalable here
         if (req.body.username == 'user' && req.body.password == 'pass') {
-            res.body.
+            
         } else {
             req.flash('error', 'Username and password are incorrect');
             res.redirect('/login');

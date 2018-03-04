@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
 
     <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+      
+    <link rel="stylesheet" href="stylesheets/index.css">
 
     <title>Hello, world!</title>
 
@@ -42,31 +45,41 @@
               margin-top: 80px;
           }
       </style>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+      <script src="index.js" type="application/javascript"></script>
   </head>
-  <body ng-app="AlleRecipe" ng-controller="mainCtrl">
-      <br>
-        <div class="container" ng-show="user">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="profile">
-                    <img class="roundedlogo" src="https://thumbs.dreamstime.com/t/default-male-avatar-profile-picture-icon-grey-man-photo-placeholder-vector-illustration-88414414.jpg" />
-                        </a>
-                    <label style="margin-left: 5px; text-decoration: underline;">Omer Moran</label>
+  <body ng-app="AlleRecipe">
+      <div ng-controller="mainctrl">
+          <br>
+            <div class="container" ng-show="user">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="profile">
+                        <img class="roundedlogo" src="https://thumbs.dreamstime.com/t/default-male-avatar-profile-picture-icon-grey-man-photo-placeholder-vector-illustration-88414414.jpg" />
+                            </a>
+                        <label style="margin-left: 5px; text-decoration: underline;">Omer Moran</label>
+                    </div>
                 </div>
             </div>
-        </div>
-      <div ng-view></div>
+          <div ng-view></div>
+      </div>
       
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+    
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });
       </script>
-    <script src="index.js" type="application/javascript"></script>
+    
+    <script src="javascript/uploadingImage.js" type="application/javascript"></script>
+    <script src="javascript/signUp.js" type="application/javascript"></script>
+    <script src="javascript/routing.js" type="application/javascript"></script>
+    
   </body>
 </html>
