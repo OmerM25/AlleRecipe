@@ -11,6 +11,7 @@ AlleRecipe.controller("uploadctrl", function($scope, $http) {
        //document.forms["uploadform"].submit();
        
        document.getElementById('imgupload').files[0].convertToBase64(function(base64) {
+           base64 = base64.replace(/^data:image\/(.*);base64,/, '');
             $http({
                 method: "post",
                 url: "/predict",
