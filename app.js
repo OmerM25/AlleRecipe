@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const clarifai = require('./clarifai');
-<<<<<<< HEAD
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -14,10 +13,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 //        throw err;
 //    }
 // );
-=======
-const app = express();
 const login = require('./login');
->>>>>>> 5c4731e267416c0e6bd499d826d7fb4feddee61a
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -37,9 +33,6 @@ app.post('/predict', function(req, res) {
     });
 });
 
-<<<<<<< HEAD
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-=======
 app.post('/login', function (req, res) {
    login.login(req, res);
 });
@@ -47,4 +40,3 @@ app.post('/login', function (req, res) {
 app.listen(PORT, function () {
   console.log('Ready');
 });
->>>>>>> 5c4731e267416c0e6bd499d826d7fb4feddee61a
