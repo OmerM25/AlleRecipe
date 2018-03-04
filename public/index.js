@@ -5,7 +5,7 @@ AlleRecipe.controller('mainCtrl', ['$scope', function($scope) {
   $scope.checkUser = function(){
     $scope.user= {name:"marina"};
   };
-}])
+})
 .config(function($routeProvider) {
   $routeProvider
   .when('/logOff', {
@@ -17,7 +17,7 @@ AlleRecipe.controller('mainCtrl', ['$scope', function($scope) {
   })
   .when('/uploadingImage', {
     templateUrl: 'view/uploadingImage.html',
-    controller : ""
+    controller: 'uploadctrl'
   })
   .when('/profile', {
     templateUrl: 'view/profile.html',
