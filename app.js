@@ -4,14 +4,10 @@ const PORT = process.env.PORT || 5000
 
 const app = express();
 
-<<<<<<< HEAD
-fs.readFile('public/index.html', (err, html) => {
-   if(err) {
-       throw err;
-   }
-=======
->>>>>>> 488ef0ac918da9d75183bb8eeb76bb0822f2c36a
-
+//fs.readFile('public/index.html', (err, html) => {
+//   if(err) {
+//       throw err;
+//   }
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('views', path.join(__dirname, 'views'));

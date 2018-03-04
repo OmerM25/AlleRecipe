@@ -10,13 +10,10 @@
     "start": "node app.js"
   },
   "dependencies": {
-<<<<<<< HEAD
     "express": "^4.16.2",
     "jade": "^1.11.0"
-=======
     "ejs": "^2.5.6",
     "express": "^4.15.2"
->>>>>>> 488ef0ac918da9d75183bb8eeb76bb0822f2c36a
   },
   "devDependencies": {
     "request": "^2.81.0",
