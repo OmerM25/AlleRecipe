@@ -1,22 +1,27 @@
 var AlleRecipe = angular.module('AlleRecipe',['ngRoute']);
 
 AlleRecipe.controller('mainCtrl', ['$scope', function($scope) {
-  $scope.greeting = 'Hola!';
   $scope.user = '';
-  $scope.setUser = function(){
-    $scope.user= "adaw";
+  $scope.checkUser = function(){
+    $scope.user= {name:"marina"};
   };
 }])
 .config(function($routeProvider) {
   $routeProvider
-   .when('/logOff', {
+  .when('/logOff', {
     templateUrl: 'view/signUp.html'
   })
+  .when('/signIn', {
+    templateUrl: 'view/signIn.html',
+    controller : ""
+  })
   .when('/uploadingImage', {
-    templateUrl: 'view/uploadingImage.html'
+    templateUrl: 'view/uploadingImage.html',
+    controller : ""
   })
   .when('/profile', {
-    templateUrl: 'view/profile.html'
+    templateUrl: 'view/profile.html',
+    controller : ""
   })
   .otherwise({
         templateUrl : 'view/signUp.html'

@@ -1,18 +1,27 @@
-
-<div class="row">
-    <div class="col-md-5">
-        welcome to alleRecipes
+<div class="container">
+    <div class="row justify-content-center title">
+        <div class="">
+            Welcome to AlleRecipes
+        </div>
     </div>
+    <div class="input-group mb-3 inputUsername">
+      <div class="input-group-prepend">
+      </div>
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3 inputUsername">
+      <div class="input-group-prepend">
+      </div>
+      <input type="text" class="form-control" placeholder="password" aria-label="password" aria-describedby="basic-addon1">
+    </div>
+    <div class="row justify-content-center">
+        <a href="#!uploadingImage">
+        <button type="button" class="btn btn-light login" ng-click="checkUser()">login</button>
+    </a>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <a href="#!signIn">
+        <button type="button" class="btn btn-light" >sign in</button>
+    </a>
 </div>
-<div class="row">
-    username
-    <input>
-</div>
-<div class="row">
-    password
-    <input>
-</div>
-<a href="#!uploadingImage">
-    <button ng-click="setUser()"> login</button>
-</a>
-
