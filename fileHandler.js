@@ -6,9 +6,15 @@ module.exports.getImages = function() {
   return (JSON.parse(fs.readFileSync('data/images', 'utf8')));
 }
 
-module.export.addImage = function(img) {
-  let images = fs.readFileSync('data/images');
-  images = JSON.parse(images);
+module.exports.addImage = function(img) {
+  var images = [];
+
+  try {
+    var currentImages = fs.readFileSync('data/images');
+    images = JSON.parse(currentImages);
+  } catch (e) {
+
+  }
 
   images.push(img);
   fs.writeFileSync('data/images', JSON.stringify(images));
@@ -20,10 +26,16 @@ module.exports.getUsers = function() {
   return (JSON.parse(fs.readFileSync('data/users', 'utf8')));
 }
 
-module.export.addUser = function(user) {
-  let users = fs.readFileSync('data/users');
-  users = JSON.parse(users);
+module.exports.addUser = function(user) {
+  var users = [];
 
-  images.push(user);
+  try {
+    var currentUsers = fs.readFileSync('data/users');
+    users = JSON.parse(currentUsers);
+  } catch (e) {
+
+  }
+
+  users.push(user);
   fs.writeFileSync('data/users', JSON.stringify(users));
 };

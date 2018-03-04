@@ -3,6 +3,7 @@ const path = require('path');
 const PORT = process.env.PORT || 5000;
 const clarifai = require('./clarifai');
 const bodyParser = require('body-parser');
+const dataHandler = require('./fileHandler');
 
 const app = express();
 app.use(bodyParser.json({limit: '50mb'}));
@@ -25,10 +26,17 @@ app.get('/', (req, res) => {
 });
 
 app.post('/predict', function(req, res) {
+  const base64 = req.body.picture;
+
   clarifai.predict(req.body.picture).then(
     function(response) {
-      var ingredients = response.outputs[0].data.concepts;
-      res.status(200).send(ingredients);
+      const ingredients = response.outputs[0].data.concepts;
+      let imageModel = {
+        src: base64,
+        ingredients: ingredients
+      };
+
+      dataHandler.addImage(imageModel);
     }, function(err) {
       res.status(500).send(err);
     });
@@ -37,6 +45,10 @@ app.post('/predict', function(req, res) {
 app.post('/login', function (req, res) {
    login.login(req, res);
 });
+
+app.get('/images', function (req, res) {
+  res.send(dataHandler.getImages());
+})
 
 app.listen(PORT, function () {
   console.log('Ready');
