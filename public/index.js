@@ -1,6 +1,6 @@
 var AlleRecipe = angular.module('AlleRecipe',['ngRoute']);
 
-AlleRecipe.controller('mainCtrl', ['$scope', function($scope) {
+AlleRecipe.controller('mainctrl', ['$scope', function($scope) {
   $scope.user = '';
   $scope.checkUser = function(){
     $scope.user= {name:"marina"};
