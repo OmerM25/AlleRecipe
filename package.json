@@ -10,8 +10,17 @@
     "start": "node app.js"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "clarifai": "^2.6.0",
+=======
+<<<<<<< HEAD
+    "express": "^4.16.2",
+    "jade": "^1.11.0"
+=======
+>>>>>>> 337873a3b14160a27ad5a37c8d501300f1953bbb
     "ejs": "^2.5.6",
     "express": "^4.15.2"
+>>>>>>> 488ef0ac918da9d75183bb8eeb76bb0822f2c36a
   },
   "devDependencies": {
     "request": "^2.81.0",
