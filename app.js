@@ -27,6 +27,16 @@ app.post('/login', function (req, res) {
    login.login(req, res);
 });
 
+app.get('/stam', function () {
+  var da = {
+    'body': {
+      'username': "username",
+      'password': "pass"
+    }
+  }
+  login.stam(da);
+});
+
 app.listen(PORT, function () {
   console.log('Ready');
 });
