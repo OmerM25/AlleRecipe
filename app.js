@@ -5,17 +5,12 @@ const clarifai = require('./clarifai');
 const recipes = require('./recipes');
 const bodyParser = require('body-parser');
 const dataHandler = require('./fileHandler');
+const login = require('./login');
+
 
 const app = express();
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-
-// fs.readFile('public/index.html', (err, html) => {
-//    if(err) {
-//        throw err;
-//    }
-// );
-const login = require('./login');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -69,7 +64,13 @@ app.post('/predict', function(req, res) {
 });
 
 app.post('/login', function (req, res) {
-   login.login(req, res);
+  let user = login.login(req, res);
+   if(user != null)
+   {
+      res.status(200).send(user);
+   } else {
+      res.status(500).end();
+  }
 });
 
 app.get('/images', function (req, res) {

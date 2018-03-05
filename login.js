@@ -1,23 +1,29 @@
 const db = require('./fileHandler');
 
-module.exports = {
-    login: function(req, res) {
+module.exports.login = 
+    function(req, res) {
         var users = db.getUsers();
 
-        if (exists(db.getUsers(), req.body.username).password == req.body.password) {
-            res.status(200);
+        var currUser = exists(db.getUsers(), req.body.username);
+
+        if (currUser != null &&
+            currUser.password == req.body.password) {
+            return currUser;
         } else {
-            res.status(500);
+            return null;
         }
-    }
-};
+    };
 
 function exists(list, element) {
-    list.forEach(item => {
-        if(item === element) {
-            return element;
+    var returnVar = null;
+
+    list.forEach(function(item){
+        if(item.username == element) {
+            returnVar = item;
+            return;
         }
     });
 
-    return null;
+    return returnVar;
 };
+

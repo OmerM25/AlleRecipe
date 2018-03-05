@@ -1,17 +1,17 @@
 
-AlleRecipe.controller('signCtrl', ['$scope', '$http', function($scope, $http) {
+AlleRecipe.controller('signCtrl', ['$scope', '$http', "$location", "$rootScope", function($scope, $http, $location, $rootScope) {
   $scope.checkUser = function(){
-    $http({
-      method: "post",
-      url: "/login",
-      data: {'username':  document.getElementById('username'), 'password':  document.getElementById('password')},
-      headers : {
-          'Content-Type': 'application/json'
-      }})
-      .then(function(res) {
-          alert("hello" + res.data.username);
-      }, function(err) {
-          alert("User name or password incorrect");
-      });
+        $http({
+            method: "post",
+            url: "/login",
+            data: {'username':  document.getElementById('username').value, 'password':  document.getElementById('password').value},
+        })
+        .then(function(response) {
+            $rootScope.user = response.data;
+            $location.path('/uploadingImage')
+        }, 
+        function(response) { // optional
+            alert("bad");
+        });
   };
 }]);
