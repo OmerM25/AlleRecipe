@@ -43,3 +43,13 @@
 .fab:hover {
   background-color: #ff4060;
 }
+
+.recipeImg {
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+    border: 1px solid #ffffff4a;
+}
