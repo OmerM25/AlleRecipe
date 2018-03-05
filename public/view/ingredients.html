@@ -1,7 +1,28 @@
 <!--<div style="background-color: white; color: black !important;">-->
 <div>
+    <div ng-if="loading" style="margin-top:250px;">
+        <div class="cssload-body">
+            <span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+            </span>
+            <div class="cssload-base">
+                    <span></span>
+                    <div class="cssload-face"></div>
+            </div>
+        </div>
+        <div class="cssload-longfazers">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
     
-    <table class="table" style="text-align: center">
+    
+    <table ng-if="!loading" class="table" style="text-align: center">
       <thead>
         <tr>
           <th scope="col">Name</th>
@@ -16,7 +37,7 @@
           <td>
               <div>
                   <label class="label" style="margin-left: 10px">
-                    <input  class="label__checkbox" type="checkbox" checked />
+                    <input ng-init="ing.active = false" ng-click="ing.active = !ing.active"  class="label__checkbox" type="checkbox" />
                     <span class="label__text">
                       <span class="label__check">
                         <i class="fa fa-check icon"></i>
@@ -29,7 +50,7 @@
       </tbody>
     </table>
     
-    <div class="fab">
+    <div ng-click="getRecipes()" class="fab">
         <a style="
     font-size: 1.8em;
     margin-top: 5px;

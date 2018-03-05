@@ -2,19 +2,15 @@ const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const clarifai = require('./clarifai');
+const recipes = require('./recipes');
 const bodyParser = require('body-parser');
 const dataHandler = require('./fileHandler');
+const login = require('./login');
+
 
 const app = express();
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-
-// fs.readFile('public/index.html', (err, html) => {
-//    if(err) {
-//        throw err;
-//    }
-// );
-const login = require('./login');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -23,6 +19,30 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
   res.render('index.html');
+});
+
+app.post('/recipe', function(req, res) {
+  var promise = recipes.getRecipe(req.body.ingredients);
+  promise.then(function(response) {
+    let recipes = [];
+    for (currRecipe in response.data.hits) {
+      var rcp = response.data.hits[currRecipe].recipe;
+      var recipe = {
+        image: rcp.image,
+        ingrLines: rcp.ingredientLines,
+        name: rcp.label,
+        calories: rcp.calories,
+        cautions: rcp.cautions,
+        link: rcp.url
+      };
+
+      recipes.push(recipe);
+    }
+
+    res.status(200).send(recipes);
+  }).catch(function(err) {
+    res.status(500).end();
+  });
 });
 
 app.post('/predict', function(req, res) {
@@ -39,12 +59,18 @@ app.post('/predict', function(req, res) {
       dataHandler.addImage(imageModel);
       res.status(200).send(ingredients);
     }, function(err) {
-      res.status(500).send(err);
+      res.status(500).end;
     });
 });
 
 app.post('/login', function (req, res) {
-   login.login(req, res);
+  let user = login.login(req, res);
+   if(user != null)
+   {
+      res.status(200).send(user);
+   } else {
+      res.status(500).end();
+  }
 });
 
 app.get('/images', function (req, res) {

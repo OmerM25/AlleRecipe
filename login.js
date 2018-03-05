@@ -1,20 +1,29 @@
-module.exports = {
-    login: function(req, res) {
+const db = require('./fileHandler');
 
-        // you might like to do a database look-up or something more scalable here
-        if (req.body.username == 'user' && req.body.password == 'pass') {
-            
-        } else {
-            req.flash('error', 'Username and password are incorrect');
-            res.redirect('/login');
-        }
-    },
+module.exports.login = 
+    function(req, res) {
+        var users = db.getUsers();
 
-    stam: function(da) {
-        if (da.body.username == 'user' && da.body.password == 'pass') {
-            return true;
+        var currUser = exists(db.getUsers(), req.body.username);
+
+        if (currUser != null &&
+            currUser.password == req.body.password) {
+            return currUser;
         } else {
-            return false;
+            return null;
         }
-    }
+    };
+
+function exists(list, element) {
+    var returnVar = null;
+
+    list.forEach(function(item){
+        if(item.username == element) {
+            returnVar = item;
+            return;
+        }
+    });
+
+    return returnVar;
 };
+

@@ -1,7 +1,28 @@
 <div style="text-align: center">
+    <!--<div class="spinner" ng-if="loading"></div>-->
+    <div ng-if="loading" style="margin-top:250px;">
+        <div class="cssload-body">
+            <span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+            </span>
+            <div class="cssload-base">
+                    <span></span>
+                    <div class="cssload-face"></div>
+            </div>
+        </div>
+        <div class="cssload-longfazers">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
     <input type="file" id="imgupload" accept="image/*" style="display:none"/>
 
-    <label for="imgupload">
+    <label for="imgupload" ng-if="!loading">
         <img class="btnAdd" src="resources/pics/plusicon.png" />
         <a class="btn btn-primary" style="margin-top:5px">Upload a photo...</a>
     </label>

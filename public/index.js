@@ -2,8 +2,7 @@ var AlleRecipe = angular.module('AlleRecipe',['ngRoute']);
 
 $(document).ready(function() { $('body').bootstrapMaterialDesign(); });
 
-AlleRecipe.controller('mainctrl', ['$scope', function($scope) {
-  $scope.user = '';
+AlleRecipe.controller('mainctrl', ['$scope', function($scope) {;
   $scope.checkUser = function(){
     $scope.user= {name:"marina"};
   };
@@ -24,6 +23,10 @@ AlleRecipe.controller('mainctrl', ['$scope', function($scope) {
   .when('/ingredients', {
     templateUrl: 'view/ingredients.html',
     controller: 'ingredientsCtrl'
+  })
+  .when('/recipes', {
+    templateUrl: 'view/recipes.html',
+    controller: 'recipesCtrl'
   })
   .when('/profile', {
     templateUrl: 'view/profile.html',
