@@ -27,8 +27,28 @@ app.get('/', (req, res) => {
 });
 
 app.post('/recipe', function(req, res) {
-  recipes.getRecipe(req.body.ingredients);
-})
+  var promise = recipes.getRecipe(req.body.ingredients);
+  promise.then(function(response) {
+    let recipes = [];
+    for (currRecipe in response.data.hits) {
+      var rcp = response.data.hits[currRecipe].recipe;
+      var recipe = {
+        image: rcp.image,
+        ingrLines: rcp.ingredientLines,
+        name: rcp.label,
+        calories: rcp.calories,
+        cautions: rcp.cautions,
+        link: rcp.url
+      };
+
+      recipes.push(recipe);
+    }
+
+    res.status(200).send(recipes);
+  }).catch(function(err) {
+    res.status(500).send(err);
+  });
+});
 
 app.post('/predict', function(req, res) {
   const base64 = req.body.picture;
@@ -42,6 +62,7 @@ app.post('/predict', function(req, res) {
       };
 
       dataHandler.addImage(imageModel);
+      res.status(200).send(ingredients);
     }, function(err) {
       res.status(500).send(err);
     });
