@@ -25,6 +25,10 @@ AlleRecipe.controller('mainctrl', ['$scope', function($scope) {
     templateUrl: 'view/ingredients.html',
     controller: 'ingredientsCtrl'
   })
+  .when('/recipes', {
+    templateUrl: 'view/recipes.html',
+    controller: 'recipesCtrl'
+  })
   .when('/profile', {
     templateUrl: 'view/profile.html',
     controller : ""

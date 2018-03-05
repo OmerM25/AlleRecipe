@@ -1,4 +1,4 @@
-AlleRecipe.controller("ingredientsCtrl", ['$scope', 'ingredientFactory', '$rootScope', '$http', function($scope, ingredientFactory, $rootScope, $http) {
+AlleRecipe.controller("ingredientsCtrl", ['$scope', '$location', '$rootScope', '$http', function($scope, $location, $rootScope, $http) {
     $scope.ingredients = $rootScope.ingredients;
     
     $scope.getRecipes = function() {
@@ -11,9 +11,14 @@ AlleRecipe.controller("ingredientsCtrl", ['$scope', 'ingredientFactory', '$rootS
         }
         
         $http.post("/recipe", {ingredients: finalIngredients}).then(function(res) {
-            alert("success");
+            if (res.data.length > 0) {
+                $rootScope.recieps = res.data;
+                $location.path('/recipes');
+            } else {
+                alert("No recipes found! Try choosing different ingredients...")
+            }
         }, function(err) {
-           alert(err); 
+           alert("Error! Try again..."); 
         });
     }
     
