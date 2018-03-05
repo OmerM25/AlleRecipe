@@ -1,7 +1,9 @@
 AlleRecipe.controller("ingredientsCtrl", ['$scope', '$location', '$rootScope', '$http', function($scope, $location, $rootScope, $http) {
     $scope.ingredients = $rootScope.ingredients;
+    $scope.loading = false;
     
     $scope.getRecipes = function() {
+        $scope.loading = true;
         var finalIngredients = [];
         
         for (ing in $scope.ingredients) {
@@ -19,6 +21,7 @@ AlleRecipe.controller("ingredientsCtrl", ['$scope', '$location', '$rootScope', '
             }
         }, function(err) {
            alert("Error! Try again..."); 
+            $scope.loading = false
         });
     }
     

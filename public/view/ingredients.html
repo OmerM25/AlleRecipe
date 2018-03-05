@@ -1,7 +1,28 @@
 <!--<div style="background-color: white; color: black !important;">-->
 <div>
+    <div ng-if="loading" style="margin-top:250px;">
+        <div class="cssload-body">
+            <span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+            </span>
+            <div class="cssload-base">
+                    <span></span>
+                    <div class="cssload-face"></div>
+            </div>
+        </div>
+        <div class="cssload-longfazers">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
     
-    <table class="table" style="text-align: center">
+    
+    <table ng-if="!loading" class="table" style="text-align: center">
       <thead>
         <tr>
           <th scope="col">Name</th>

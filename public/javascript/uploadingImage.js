@@ -1,4 +1,6 @@
 AlleRecipe.controller("uploadctrl", ['$scope', '$http', 'ingredientFactory', '$location', '$rootScope', function($scope, $http, ingredientFactory, $location, $rootScope) {
+    $scope.loading = false;
+    
     File.prototype.convertToBase64 = function(callback){
         var reader = new FileReader();
         reader.onloadend = function (e) {
@@ -8,8 +10,8 @@ AlleRecipe.controller("uploadctrl", ['$scope', '$http', 'ingredientFactory', '$l
     };
     
     function submitForm() {
-       //document.forms["uploadform"].submit();
-       
+       $scope.loading = true;
+        
        document.getElementById('imgupload').files[0].convertToBase64(function(base64) {
            base64 = base64.replace(/^data:image\/(.*);base64,/, '');
             $http({
@@ -25,6 +27,7 @@ AlleRecipe.controller("uploadctrl", ['$scope', '$http', 'ingredientFactory', '$l
                     $location.path('/ingredients');
                 }, function(err) {
                     alert("Error! Try re-uploading...")
+                    $scope.loading = false;
                 });           
        });
    }
