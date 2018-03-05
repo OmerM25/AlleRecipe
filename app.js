@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const clarifai = require('./clarifai');
+const recipes = require('./recipes');
 const bodyParser = require('body-parser');
 const dataHandler = require('./fileHandler');
 
@@ -25,6 +26,10 @@ app.get('/', (req, res) => {
   res.render('index.html');
 });
 
+app.post('/recipe', function(req, res) {
+  recipes.getRecipe(req.body.ingredients);
+})
+
 app.post('/predict', function(req, res) {
   const base64 = req.body.picture;
 
@@ -37,7 +42,6 @@ app.post('/predict', function(req, res) {
       };
 
       dataHandler.addImage(imageModel);
-      res.status(200).send(ingredients);
     }, function(err) {
       res.status(500).send(err);
     });

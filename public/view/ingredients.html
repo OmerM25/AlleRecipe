@@ -16,7 +16,7 @@
           <td>
               <div>
                   <label class="label" style="margin-left: 10px">
-                    <input  class="label__checkbox" type="checkbox" checked />
+                    <input ng-init="ing.active = true" ng-click="ing.active = !ing.active"  class="label__checkbox" type="checkbox" checked />
                     <span class="label__text">
                       <span class="label__check">
                         <i class="fa fa-check icon"></i>
@@ -29,7 +29,7 @@
       </tbody>
     </table>
     
-    <div class="fab">
+    <div ng-click="getRecipes()" class="fab">
         <a style="
     font-size: 1.8em;
     margin-top: 5px;
